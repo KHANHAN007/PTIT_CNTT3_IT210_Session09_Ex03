@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Theme</title>
+
+    <style>
+        body.light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        body.dark-mode {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+        }
+    </style>
 </head>
-<body>
-$END$
+
+<body th:class="${theme == 'dark'} ? 'dark-mode' : 'light-mode'">
+
+<h1>Welcome to the Theme Switcher!</h1>
+
+<p>Current theme:
+    <span th:text="${theme}">light</span>
+</p>
+
+<form th:action="@{/change-theme}" method="post">
+    <input type="hidden"
+           name="theme"
+           th:value="${theme == 'dark'} ? 'light' : 'dark'">
+
+    <button type="submit">
+        Switch Theme
+    </button>
+</form>
+
 </body>
 </html>

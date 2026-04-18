@@ -1,0 +1,2 @@
+- Dùng cookie vì yêu cầu lưu 30 ngày, vẫn lưu ở client kể cả khi tắt trình duyệt và tắt máy
+- Chống XSS bằng cách bật flag -> cookie.setHttpOnly(true): JS không đọc được cookie, chỉ gửi qua HTTPS;
